@@ -18,7 +18,7 @@ def extract(year, month):
         logging.info("Unzipping file")
         with ZipFile(BytesIO(r.content)) as zf:
             with open(f"../data/{filename}", mode="w+") as f:
-                f.write(zf.read(filename).decode("utf-8") )
+                f.write(zf.read(filename).decode("utf-8"))
         logging.info("File saved in disk")
     else:
         logging.error("Unable to get file from url")
