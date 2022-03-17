@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 BUCKET = "https://s3.amazonaws.com/tripdata"
 
 
-def main(year, month):
+def extract(year, month):
     filename = f"{year}{month}-citibike-tripdata.csv"
     logging.info(f"Requesting file '{filename}'")
     r = requests.get(f"{BUCKET}/{filename}.zip")
@@ -30,4 +30,4 @@ if __name__ == "__main__":
     year = sys.argv[1]
     month = sys.argv[2]
 
-    main(year, month)
+    extract(year, month)
