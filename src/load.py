@@ -13,7 +13,7 @@ def load(year, month):
     dates = ["started_at", "ended_at"]
     try:
         df = pd.read_csv(
-            f"../data/{filename}", index_col=0, parse_dates=dates, dtype="str"
+            f"data/{filename}", index_col=0, parse_dates=dates, dtype="str"
         )
         logging.info(f"Loaded '{filename}' into DF")
     except:
