@@ -7,7 +7,25 @@ from base import DATA_TYPES, engine, TABLE
 logging.basicConfig(level=logging.INFO)
 
 
+def file_loaded(year, month):
+    with engine.connect() as conn:
+        res = conn.execute(
+            f"""
+            SELECT * FROM {TABLE} 
+            WHERE 
+                EXTRACT(MONTH FROM started_at) = {month} 
+                AND EXTRACT(YEAR FROM started_at) = {year};
+            """
+        )
+
+        return bool(len(res.all()))
+
+
 def load(year, month):
+    if file_loaded(year, month):
+        logging.info("File already loaded, skipping")
+        return
+
     filename = f"{year}{month}-citibike-tripdata.csv"
     dates = ["started_at", "ended_at"]
     try:
