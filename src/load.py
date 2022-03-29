@@ -1,9 +1,8 @@
 import logging
-from datetime import datetime
 
 import pandas as pd
 
-from base import engine, TABLE
+from base import DATA_TYPES, engine, TABLE
 
 logging.basicConfig(level=logging.INFO)
 
@@ -13,7 +12,7 @@ def load(year, month):
     dates = ["started_at", "ended_at"]
     try:
         df = pd.read_csv(
-            f"data/{filename}", index_col=0, parse_dates=dates, dtype="str"
+            f"data/{filename}", index_col=0, parse_dates=dates, dtype=DATA_TYPES
         )
         logging.info(f"Loaded '{filename}' into DF")
     except:
