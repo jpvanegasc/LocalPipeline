@@ -13,10 +13,10 @@ def unique_id(df: pd.DataFrame):
 
     if unique:
         logging.info("Ride ID is unique")
+        return
     else:
         logging.error("Ride ID is not unique")
-
-    return unique
+        exit(1)
 
 
 def main():
