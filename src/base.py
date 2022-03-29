@@ -22,7 +22,9 @@ CREATE TABLE IF NOT EXISTS {TABLE}(
     start_lng           float,
     end_lat             float,
     end_lng             float,
-    member_casual       varchar
+    member_casual       varchar,
+    weekday_started_at  smallint
+
 );
 """
 

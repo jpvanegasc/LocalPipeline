@@ -37,6 +37,9 @@ def load(year, month):
         logging.error(f"Failed to load '{filename}' into DF", exc_info=True)
         return
 
+    # Add weekday
+    df["weekday_started_at"] = df["started_at"].map(lambda x: x.weekday())
+
     connection = engine.connect()
 
     try:
